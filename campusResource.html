@@ -58,12 +58,14 @@
 <body>
 
     <button class="open-btn" onclick="openForm()">Add Resource</button>
+	<div id="resourceList" style="height:600px;width:1200px;margin-left:175px;margin-top:75px;border:1px solid #ccc;font:24px/36px Georgia, Garamond, Serif;overflow:auto;">
+</div>
 
     <div id="formModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeForm()">&times;</span>
             <h3>Resource Form</h3>
-            <form>
+            <form id="resourceForm">
                 <label>Resource Name</label>
                 <input type="text" name="resourceName" required>
 
@@ -101,6 +103,28 @@
                 modal.style.display = "none";
             }
         }
+
+	document.getElementById("resourceForm").addEventListener("submit", function(e) {
+        e.preventDefault(); // Stop page refresh
+
+        const name = this.resourceName.value;
+        const location = this.location.value;
+        const description = this.description.value;
+        const availability = this.availability.value;
+
+        const resourceList = document.getElementById("resourceList");
+
+resourceList.innerHTML += `
+${name}<br>
+${location}<br>
+${description}<br>
+Status: ${availability}
+<hr>
+`;
+	
+	this.reset();
+	closeForm();
+	});
     </script>
 
 </body>
