@@ -13,6 +13,11 @@
             font-size: 16px;
             cursor: pointer;
         }
+	.remove-btn {
+	    padding: 10px 20px;
+	    font-size: 16px;
+	    cursor: pointer;
+	}
 
         .modal {
             display: none;
@@ -58,6 +63,7 @@
 <body>
 
     <button class="open-btn" onclick="openForm()">Add Resource</button>
+    <button class="remove-btn" onclick="removeText()">Remove Resource</button>
 	<div id="resourceList" style="height:600px;width:1200px;margin-left:175px;margin-top:75px;border:1px solid #ccc;font:24px/36px Georgia, Garamond, Serif;overflow:auto;">
 </div>
 
@@ -96,6 +102,13 @@
         function closeForm() {
             document.getElementById("formModal").style.display = "none";
         }
+	
+	function removeText() {
+	    const resourceList = document.getElementById("resourceList");
+	    if (resourceList.lastElementChild) {
+		resourceList.removeChild(resourceList.lastElementChild);
+	    }
+	}
 
         window.onclick = function(event) {
             const modal = document.getElementById("formModal");
@@ -113,14 +126,17 @@
         const availability = this.availability.value;
 
         const resourceList = document.getElementById("resourceList");
+	const resourceDiv = document.createElement("div");
+	resourceDiv.className = "resourceItem";
 
-resourceList.innerHTML += `
+resourceDiv.innerHTML = `
 ${name}<br>
 ${location}<br>
 ${description}<br>
 Status: ${availability}
 <hr>
 `;
+resourceList.appendChild(resourceDiv);
 	
 	this.reset();
 	closeForm();
