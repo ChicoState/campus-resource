@@ -17,6 +17,7 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+	    margin-left: 10px;
         }
 
         .modal {
@@ -69,7 +70,6 @@
 <body>
 
     <button class="open-btn" onclick="openForm()">Add Resource</button>
-    <button class="remove-btn" onclick="removeText()">Remove Resource</button>
         <div id="resourceList" style="height:600px;width:1200px;margin-left:175px;margin-top:75px;border:1px solid #ccc;font:24px/36px Georgia, Garamond, Serif;overflow:auto;">
 </div>
 
@@ -107,13 +107,6 @@
 
         function closeForm() {
             document.getElementById("formModal").style.display = "none";
-        }
-
-        function removeText() {
-            const resourceList = document.getElementById("resourceList");
-            if (resourceList.lastElementChild) {
-                resourceList.removeChild(resourceList.lastElementChild);
-            }
         }
 
         window.onclick = function(event) {
@@ -173,6 +166,21 @@ resourceList.appendChild(resourceDiv);
           });
 
           node.appendChild(bookBtn);
+
+	
+	  if (node.querySelector(".remove-btn")) continue;
+
+	  const removeBtn = document.createElement("button");
+	  removeBtn.type = "button";
+	  removeBtn.className = "remove-btn";
+	  removeBtn.textContent = "Remove Resource";
+	  removeBtn.style.marginTop = "10px";
+
+	  removeBtn.addEventListener("click", () => {
+	     node.remove();
+ 	  });
+
+	  node.appendChild(removeBtn)
         }
       }
     }
