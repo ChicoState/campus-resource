@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Resource Form</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            
+            /* Defines properties of visuals like buttons with information such as font size or margins */
+            .open-btn {
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+            .remove-btn {
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+	            margin-left: 10px;
+            }
+
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.5);
+            }
+
+            .modal-content {
+                background-color: white;
+                margin: 8% auto;
+                padding: 20px;
+                width: 350px;
+                border-radius: 8px;
+                position: relative;
+            }
+
+            .close {
+                position: absolute;
+                right: 12px;
+                top: 8px;
+                font-size: 20px;
+                cursor: pointer;
+            }
+            .book-btn{
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+                margin-left: 10px;
+            }
+
+            input, textarea, select {
+                width: 100%;
+                margin-bottom: 12px;
+                padding: 8px;
+                box-sizing: border-box;
+            }
+
+            button[type="submit"] {
+                padding: 8px 12px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Places a button with the properties defined in open-btn that opens a form when clicked -->
+        <button class="open-btn" onclick="openForm()">Add Resource</button>
+
+        <!-- Creates space for booked resources to go into -->
+        <div id="resourceList" style="height:600px;width:1200px;margin-left:175px;margin-top:75px;border:1px solid #ccc;font:24px/36px Georgia, Garamond, Serif;overflow:auto;">
+        </div>
+
+        <!-- Creates form to fill out -->
+        <div id="formModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeForm()">&times;</span>
+                <h3>Resource Form</h3>
+                <form id="resourceForm">
+                    <label>Resource Name</label>
+                    <input type="text" name="resourceName" required>
+
+                    <label>Location</label>
+                    <input type="text" name="location" required>
+
+                    <label>Description</label>
+                    <textarea name="description" rows="4" required></textarea>
+
+                    <label>Availability</label>
+                    <select name="availability" required>
+                        <option value="">Select Availability</option>
+                        <option value="Available">Available</option>
+                        <option value="Unavailable">Unavailable</option>
+                        <option value="Limited">Limited</option>
+                    </select>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            // Displays the form when called
+            function openForm() {
+                document.getElementById("formModal").style.display = "block";
+            }
+
+            // Stops displaying the form when called
+            function closeForm() {
+                document.getElementById("formModal").style.display = "none";
+            }
+
+            // Closes form upon clicking outside of box
+            window.onclick = function(event) {
+                const modal = document.getElementById("formModal");
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            // When form is submitted, stores the results to HTML text in a ResourceDiv, which is then added to the resource list
+            document.getElementById("resourceForm").addEventListener("submit", function(e) {
+                e.preventDefault(); // Stop page refresh
+
+                const name = this.resourceName.value;
+                const location = this.location.value;
+                const description = this.description.value;
+                const availability = this.availability.value;
+
+                const resourceList = document.getElementById("resourceList");
+                const resourceDiv = document.createElement("div");
+                resourceDiv.className = "resourceItem";
+
+                resourceDiv.innerHTML = `
+                ${name}<br>
+                ${location}<br>
+                ${description}<br>
+                Status: ${availability}
+                <hr>
+                `;
+
+                resourceList.appendChild(resourceDiv);
+
+                this.reset();
+                closeForm();
+            });
+        </script>
+
+        <script>
+            const resourceList = document.getElementById("resourceList");
+
+            // When a resource item is added, append a "Book" and "Remove" button to it
+            const observer = new MutationObserver((mutations) => {
+                for (const m of mutations) {
+                    for (const resource of m.addedNodes) {
+                        if (resource.nodeType === 1 && resource.classList.contains("resourceItem")) {
+                            // Creates booking button
+                            if (resource.querySelector(".book-btn")) continue;
+
+                            const bookBtn = document.createElement("button");
+                            bookBtn.type = "button";
+                            bookBtn.className = "book-btn";
+                            bookBtn.textContent = "Book Resource";
+                            bookBtn.style.marginTop = "10px";
+
+                            // Gives alert that resource has been booked. Can be updated in future with booking logic
+                            bookBtn.addEventListener("click", () => {
+                                alert("Booked: " + resource.firstChild.textContent.trim());
+                            });
+                            
+                            // Adds the booking button to the resource
+                            resource.appendChild(bookBtn);
+
+                            // Creates remove button
+	                        if (resource.querySelector(".remove-btn")) continue;
+
+	                        const removeBtn = document.createElement("button");
+	                        removeBtn.type = "button";
+	                        removeBtn.className = "remove-btn";
+	                        removeBtn.textContent = "Remove Resource";
+	                        removeBtn.style.marginTop = "10px";
+
+                            // Removes resource upon click
+	                        removeBtn.addEventListener("click", () => {
+	                            resource.remove();
+ 	                        });
+
+                            // Adds remove button to the resource
+	                        resource.appendChild(removeBtn)
+                        }
+                    }
+                }
+            });
+
+            observer.observe(resourceList, { childList: true });
+        </script>
+    </body>
+</html>
