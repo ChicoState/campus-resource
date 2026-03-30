@@ -1,204 +1,870 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Resource Form</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-            }
-            
-            /* Defines properties of visuals like buttons with information such as font size or margins */
-            .open-btn {
-                padding: 10px 20px;
-                font-size: 16px;
-                cursor: pointer;
-            }
-            .remove-btn {
-                padding: 10px 20px;
-                font-size: 16px;
-                cursor: pointer;
-	            margin-left: 10px;
-            }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Resource Reservation</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-            .modal {
-                display: none;
-                position: fixed;
-                z-index: 1;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0,0,0,0.5);
-            }
+    :root {
+      --maroon: #6B1A2A;
+      --maroon-dark: #4e1120;
+      --bg: #F5F3EF;
+      --surface: #FFFFFF;
+      --border: #DDD8D0;
+      --text: #1C1A17;
+      --muted: #7A736A;
+      --tab-inactive: #E8E4DE;
+      --shadow: 0 2px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 32px rgba(0,0,0,0.15);
+    }
 
-            .modal-content {
-                background-color: white;
-                margin: 8% auto;
-                padding: 20px;
-                width: 350px;
-                border-radius: 8px;
-                position: relative;
-            }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
 
-            .close {
-                position: absolute;
-                right: 12px;
-                top: 8px;
-                font-size: 20px;
-                cursor: pointer;
-            }
-            .book-btn{
-                padding: 10px 20px;
-                font-size: 16px;
-                cursor: pointer;
-                margin-left: 10px;
-            }
+    #login-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
 
-            input, textarea, select {
-                width: 100%;
-                margin-bottom: 12px;
-                padding: 8px;
-                box-sizing: border-box;
-            }
+    .login-logo {
+      width: 64px;
+      height: 64px;
+      background: var(--maroon);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      color: white;
+      font-family: 'EB Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: -1px;
+    }
 
-            button[type="submit"] {
-                padding: 8px 12px;
-                cursor: pointer;
-            }
-        </style>
-    </head>
+    .login-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem 3rem;
+      width: 420px;
+      box-shadow: var(--shadow-lg);
+    }
 
-    <body>
-        <!-- Places a button with the properties defined in open-btn that opens a form when clicked -->
-        <button class="open-btn" onclick="openForm()">Add Resource</button>
+    .login-card h1 {
+      font-family: 'EB Garamond', serif;
+      font-size: 2rem;
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
 
-        <!-- Creates space for booked resources to go into -->
-        <div id="resourceList" style="height:600px;width:1200px;margin-left:175px;margin-top:75px;border:1px solid #ccc;font:24px/36px Georgia, Garamond, Serif;overflow:auto;">
+    .login-card .subtitle {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.875rem;
+      margin-bottom: 2rem;
+    }
+
+    .field-group { margin-bottom: 1.25rem; }
+
+    .field-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .field-group input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+
+    .field-group input:focus {
+      outline: none;
+      border-color: var(--maroon);
+      background: white;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 0.85rem;
+      background: var(--maroon);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: var(--maroon-dark); }
+    .btn-primary:active { transform: scale(0.98); }
+
+    #app-page { display: none; min-height: 100vh; }
+
+    .navbar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-logo {
+      width: 36px;
+      height: 36px;
+      background: var(--maroon);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: 'EB Garamond', serif;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .nav-title {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-outline {
+      padding: 0.45rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      background: transparent;
+      font-size: 0.85rem;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      color: var(--text);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--maroon); background: #faf8f5; }
+
+    .btn-sm-primary {
+      padding: 0.45rem 1rem;
+      background: var(--maroon);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-sm-primary:hover { background: var(--maroon-dark); }
+
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .tab-bar {
+      display: flex;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .tab-btn {
+      padding: 0.8rem 2rem;
+      border: 1px solid var(--border);
+      border-bottom: none;
+      background: var(--tab-inactive);
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 10px 10px 0 0;
+      margin-right: 4px;
+      transition: background 0.2s, color 0.2s;
+      position: relative;
+      bottom: -2px;
+    }
+    .tab-btn:hover { background: #dedad4; color: var(--text); }
+    .tab-btn.active { background: var(--maroon); color: white; border-color: var(--maroon); z-index: 1; }
+
+    .tab-panel {
+      background: #787066;
+      border-radius: 0 8px 8px 8px;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      border-top: none;
+      min-height: 500px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .resource-card {
+      background: var(--surface);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .resource-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+
+    .card-image {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: #E0DDD8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-body {
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-status {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+    .status-available   { background: #E6F4EA; color: #276B3C; }
+    .status-limited     { background: #FFF4E0; color: #8A5A00; }
+    .status-unavailable { background: #FCE8E8; color: #8B2020; }
+
+    .card-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.4rem; }
+
+    .card-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-footer {
+      padding: 0.75rem 1rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-location { font-size: 0.78rem; color: var(--muted); }
+
+    .btn-view {
+      padding: 0.4rem 0.9rem;
+      background: transparent;
+      border: 1.5px solid var(--maroon);
+      color: var(--maroon);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-view:hover { background: var(--maroon); color: white; }
+
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem;
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      gap: 0.75rem;
+    }
+    .empty-state p { font-size: 0.95rem; }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(2px);
+    }
+    .modal-overlay.open { display: flex; }
+
+    .modal-box {
+      background: var(--surface);
+      border-radius: 14px;
+      width: 480px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      animation: slideUp 0.2s ease;
+    }
+
+    .detail-modal-box {
+      background: var(--surface);
+      border-radius: 14px;
+      width: 860px;
+      max-width: 95vw;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      animation: slideUp 0.2s ease;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-header h3 {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--muted);
+      line-height: 1;
+      padding: 0.2rem;
+      border-radius: 4px;
+      transition: color 0.15s;
+    }
+    .modal-close:hover { color: var(--text); }
+
+    .modal-body { padding: 1.5rem; }
+
+    .modal-body .field-group label {
+      text-transform: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: 0;
+    }
+
+    .modal-body select,
+    .modal-body textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+
+    .modal-body select:focus,
+    .modal-body textarea:focus,
+    .modal-body input:focus {
+      outline: none;
+      border-color: var(--maroon);
+      background: white;
+    }
+
+    .modal-footer {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+    }
+
+    .detail-header {
+      background: var(--maroon);
+      color: white;
+      padding: 1.25rem 1.5rem;
+      border-radius: 14px 14px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .detail-header h3 {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+
+    .detail-header .modal-close { color: rgba(255,255,255,0.7); }
+    .detail-header .modal-close:hover { color: white; }
+
+    .detail-body { padding: 1.5rem; }
+
+    .detail-desc {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .detail-media {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .detail-img {
+      border-radius: 8px;
+      background: #E0DDD8;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .detail-calendar {
+      border-radius: 8px;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      padding: 1rem;
+    }
+
+    .calendar-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .time-slots {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.4rem;
+    }
+
+    .time-slot {
+      padding: 0.4rem 0;
+      text-align: center;
+      border: 1.5px solid var(--border);
+      border-radius: 5px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      background: white;
+    }
+    .time-slot:hover { border-color: var(--maroon); color: var(--maroon); }
+    .time-slot.selected { background: var(--maroon); color: white; border-color: var(--maroon); }
+    .time-slot.taken { background: #eee; color: #bbb; cursor: not-allowed; }
+
+    .detail-footer {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .agree-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      cursor: pointer;
+    }
+    .agree-label input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--maroon);
+      cursor: pointer;
+    }
+
+    .btn-schedule {
+      padding: 0.7rem 1.75rem;
+      background: var(--maroon);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-schedule:hover { background: var(--maroon-dark); }
+    .btn-schedule:disabled { background: #ccc; cursor: not-allowed; }
+
+    #toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #1C1A17;
+      color: white;
+      padding: 0.8rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      box-shadow: var(--shadow-lg);
+      z-index: 999;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.25s, transform 0.25s;
+      pointer-events: none;
+    }
+    #toast.show { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- login -->
+<div id="login-page">
+  <div class="login-logo">CR</div>
+  <div class="login-card">
+    <h1>Sign in to continue</h1>
+    <p class="subtitle">Campus Resource Reservation System</p>
+
+    <div class="field-group">
+      <label>University Email</label>
+      <input type="email" id="login-email" placeholder="yourname@csuchico.edu">
+    </div>
+    <div class="field-group">
+      <label>Password</label>
+      <input type="password" id="login-pass" placeholder="••••••••">
+    </div>
+    <button class="btn-primary" onclick="doLogin()">Sign In</button>
+  </div>
+</div>
+
+<!-- main app -->
+<div id="app-page">
+
+  <nav class="navbar">
+    <div class="nav-brand">
+      <div class="nav-logo">CR</div>
+      <span class="nav-title">Campus Resources</span>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-outline" onclick="openAddModal()">+ Add Resource</button>
+      <button class="btn-sm-primary" onclick="doLogout()">Sign Out</button>
+    </div>
+  </nav>
+
+  <div class="main-content">
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('Books', this)">Books</button>
+      <button class="tab-btn" onclick="switchTab('Rooms', this)">Rooms</button>
+      <button class="tab-btn" onclick="switchTab('Loanables', this)">Loanables</button>
+      <button class="tab-btn" onclick="switchTab('Tutoring', this)">Tutoring</button>
+    </div>
+
+    <div class="tab-panel">
+      <div class="card-grid" id="card-grid"></div>
+      <div class="empty-state" id="empty-state" style="display:none">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6M9 13h4"/></svg>
+        <p>No resources yet.<br>Click <strong>+ Add Resource</strong> to add one.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- add resource modal -->
+<div class="modal-overlay" id="add-modal" onclick="closeOnOverlay(event,'add-modal')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>Add New Resource</h3>
+      <button class="modal-close" onclick="closeModal('add-modal')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="field-group">
+        <label>Resource Name</label>
+        <input type="text" id="r-name" placeholder="e.g. Study Room A">
+      </div>
+      <div class="field-group">
+        <label>Location</label>
+        <input type="text" id="r-location" placeholder="e.g. Meriam Library, 2nd Floor">
+      </div>
+      <div class="field-group">
+        <label>Category</label>
+        <select id="r-category">
+          <option value="Books">Books</option>
+          <option value="Rooms">Rooms</option>
+          <option value="Loanables">Loanables</option>
+          <option value="Tutoring">Tutoring</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label>Description</label>
+        <textarea id="r-desc" rows="3" placeholder="Describe the resource..."></textarea>
+      </div>
+      <div class="field-group">
+        <label>Availability</label>
+        <select id="r-avail">
+          <option value="Available">Available</option>
+          <option value="Limited">Limited</option>
+          <option value="Unavailable">Unavailable</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-outline" onclick="closeModal('add-modal')">Cancel</button>
+      <button class="btn-sm-primary" onclick="submitResource()">Add Resource</button>
+    </div>
+  </div>
+</div>
+
+<!-- detail / schedule modal -->
+<div class="modal-overlay" id="detail-modal" onclick="closeOnOverlay(event,'detail-modal')">
+  <div class="detail-modal-box">
+    <div class="detail-header">
+      <h3 id="detail-title"></h3>
+      <button class="modal-close" onclick="closeModal('detail-modal')">&times;</button>
+    </div>
+    <div class="detail-body">
+      <p class="detail-desc" id="detail-desc"></p>
+      <div class="detail-media">
+        <div class="detail-img">
+          <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#b0a89e" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="3" x2="21" y2="21"/><line x1="21" y1="3" x2="3" y2="21"/></svg>
         </div>
-
-        <!-- Creates form to fill out -->
-        <div id="formModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeForm()">&times;</span>
-                <h3>Resource Form</h3>
-                <form id="resourceForm">
-                    <label>Resource Name</label>
-                    <input type="text" name="resourceName" required>
-
-                    <label>Location</label>
-                    <input type="text" name="location" required>
-
-                    <label>Description</label>
-                    <textarea name="description" rows="4" required></textarea>
-
-                    <label>Availability</label>
-                    <select name="availability" required>
-                        <option value="">Select Availability</option>
-                        <option value="Available">Available</option>
-                        <option value="Unavailable">Unavailable</option>
-                        <option value="Limited">Limited</option>
-                    </select>
-
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
+        <div class="detail-calendar">
+          <p class="calendar-title">Select a time slot</p>
+          <div class="time-slots" id="time-slots"></div>
         </div>
+      </div>
+    </div>
+    <div class="detail-footer">
+      <label class="agree-label">
+        <input type="checkbox" id="agree-check" onchange="toggleSchedule()">
+        I agree to the campus resource usage policy
+      </label>
+      <button class="btn-schedule" id="schedule-btn" disabled onclick="doSchedule()">Schedule</button>
+    </div>
+  </div>
+</div>
 
-        <script>
-            // Displays the form when called
-            function openForm() {
-                document.getElementById("formModal").style.display = "block";
-            }
+<div id="toast"></div>
 
-            // Stops displaying the form when called
-            function closeForm() {
-                document.getElementById("formModal").style.display = "none";
-            }
+<script>
+  const resources = {
+    Books: [
+      { name: "Engineering Textbook Set", location: "Meriam Library, 1st Floor", desc: "A curated collection of engineering textbooks available for 3-day checkout. Covers civil, electrical, and mechanical engineering topics.", avail: "Available" },
+      { name: "Calculus Reference Library", location: "Meriam Library, Math Section", desc: "Complete set of calculus and linear algebra references. Ideal for exam prep.", avail: "Limited" },
+      { name: "CSci Core Books", location: "O'Connell Technology Center", desc: "Programming fundamentals, algorithms, and data structures texts for CS majors.", avail: "Available" },
+    ],
+    Rooms: [
+      { name: "Study Room 201", location: "Meriam Library, 2nd Floor", desc: "Quiet study room for up to 6 people. Equipped with a whiteboard and HDMI display.", avail: "Available" },
+      { name: "Collaboration Suite B", location: "Student Services Center", desc: "Open collaboration space with flexible seating and audio conferencing capabilities.", avail: "Available" },
+      { name: "Recording Booth A", location: "CAVE, Bell Memorial Union", desc: "Soundproofed recording booth with microphone and camera setup. Perfect for presentations.", avail: "Unavailable" },
+    ],
+    Loanables: [
+      { name: "Laptop Loaner #5", location: "IT Help Desk, Butte Hall", desc: "Dell Latitude loaner laptop with standard software suite installed. 24-hour checkout.", avail: "Available" },
+      { name: "DSLR Camera Kit", location: "Arts & Media Building", desc: "Canon EOS R50 with two lenses. Available for weekend checkout with student ID.", avail: "Limited" },
+      { name: "Portable Projector", location: "IT Help Desk, Butte Hall", desc: "Compact HD projector with HDMI and wireless casting. Max 4-hour checkout.", avail: "Available" },
+    ],
+    Tutoring: [
+      { name: "Math Tutoring Drop-In", location: "Meriam Library, Room 107", desc: "Peer tutoring for Calculus, Statistics, and Linear Algebra. No appointment needed.", avail: "Available" },
+      { name: "Writing Center Session", location: "Meriam Library, 1st Floor", desc: "One-on-one writing consultation with trained writing tutors. Schedule up to 50 min.", avail: "Available" },
+      { name: "CS Tutor — Office Hours", location: "Tehama Hall 120", desc: "TA-led help sessions for CSCI 111 and CSCI 211. Bring your code and questions.", avail: "Limited" },
+    ],
+  };
 
-            // Closes form upon clicking outside of box
-            window.onclick = function(event) {
-                const modal = document.getElementById("formModal");
-                if (event.target === modal) {
-                    modal.style.display = "none";
-                }
-            }
+  let currentTab = 'Books';
+  let currentResource = null;
 
-            // When form is submitted, stores the results to HTML text in a ResourceDiv, which is then added to the resource list
-            document.getElementById("resourceForm").addEventListener("submit", function(e) {
-                e.preventDefault(); // Stop page refresh
+  function doLogin() {
+    const email = document.getElementById('login-email').value.trim();
+    const pass = document.getElementById('login-pass').value;
+    if (!email || !pass) { showToast('Please fill in all fields.'); return; }
+    document.getElementById('login-page').style.display = 'none';
+    document.getElementById('app-page').style.display = 'block';
+    renderTab(currentTab);
+  }
 
-                const name = this.resourceName.value;
-                const location = this.location.value;
-                const description = this.description.value;
-                const availability = this.availability.value;
+  function doLogout() {
+    document.getElementById('app-page').style.display = 'none';
+    document.getElementById('login-page').style.display = 'flex';
+    document.getElementById('login-email').value = '';
+    document.getElementById('login-pass').value = '';
+  }
 
-                const resourceList = document.getElementById("resourceList");
-                const resourceDiv = document.createElement("div");
-                resourceDiv.className = "resourceItem";
+  function switchTab(tab, el) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    el.classList.add('active');
+    currentTab = tab;
+    renderTab(tab);
+  }
 
-                resourceDiv.innerHTML = `
-                ${name}<br>
-                ${location}<br>
-                ${description}<br>
-                Status: ${availability}
-                <hr>
-                `;
+  function renderTab(tab) {
+    const grid = document.getElementById('card-grid');
+    const empty = document.getElementById('empty-state');
+    const list = resources[tab] || [];
+    grid.innerHTML = '';
+    if (list.length === 0) {
+      empty.style.display = 'flex';
+      return;
+    }
+    empty.style.display = 'none';
+    list.forEach((r, i) => {
+      let statusClass = 'status-unavailable';
+      if (r.avail === 'Available') statusClass = 'status-available';
+      else if (r.avail === 'Limited') statusClass = 'status-limited';
+      const card = document.createElement('div');
+      card.className = 'resource-card';
+      card.innerHTML = `
+        <div class="card-image">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.2">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <line x1="3" y1="3" x2="21" y2="21"/>
+            <line x1="21" y1="3" x2="3" y2="21"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="card-status ${statusClass}">${r.avail}</span>
+          <div class="card-title">${r.name}</div>
+          <div class="card-desc">${r.desc}</div>
+        </div>
+        <div class="card-footer">
+          <span class="card-location">📍 ${r.location}</span>
+          <button class="btn-view" onclick="openDetail(${i})">View details</button>
+        </div>`;
+      grid.appendChild(card);
+    });
+  }
 
-                resourceList.appendChild(resourceDiv);
+  function openAddModal() { openModal('add-modal'); }
 
-                this.reset();
-                closeForm();
-            });
-        </script>
+  function submitResource() {
+    const name = document.getElementById('r-name').value.trim();
+    const loc = document.getElementById('r-location').value.trim();
+    const cat = document.getElementById('r-category').value;
+    const desc = document.getElementById('r-desc').value.trim();
+    const avail = document.getElementById('r-avail').value;
+    if (!name || !loc || !desc) { showToast('Please fill in all required fields.'); return; }
+    resources[cat].push({ name, location: loc, desc, avail });
+    closeModal('add-modal');
+    if (cat === currentTab) renderTab(currentTab);
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      if (b.textContent === cat) b.click();
+    });
+    showToast(`"${name}" added to ${cat}.`);
+    document.getElementById('r-name').value = '';
+    document.getElementById('r-location').value = '';
+    document.getElementById('r-desc').value = '';
+    document.getElementById('r-avail').value = 'Available';
+  }
 
-        <script>
-            const resourceList = document.getElementById("resourceList");
+  function openDetail(index) {
+    const r = resources[currentTab][index];
+    currentResource = r;
+    document.getElementById('detail-title').textContent = r.name;
+    document.getElementById('detail-desc').textContent = r.desc + ' — Located at ' + r.location + '.';
+    document.getElementById('agree-check').checked = false;
+    document.getElementById('schedule-btn').disabled = true;
+    buildTimeSlots();
+    openModal('detail-modal');
+  }
 
-            // When a resource item is added, append a "Book" and "Remove" button to it
-            const observer = new MutationObserver((mutations) => {
-                for (const m of mutations) {
-                    for (const resource of m.addedNodes) {
-                        if (resource.nodeType === 1 && resource.classList.contains("resourceItem")) {
-                            // Creates booking button
-                            if (resource.querySelector(".book-btn")) continue;
+  function buildTimeSlots() {
+    const times = ['8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM','7:00 PM'];
+    const taken = [2, 5, 9]; // fake unavailable slots
+    const container = document.getElementById('time-slots');
+    container.innerHTML = '';
+    times.forEach((t, i) => {
+      const slot = document.createElement('div');
+      slot.className = 'time-slot' + (taken.includes(i) ? ' taken' : '');
+      slot.textContent = t;
+      if (!taken.includes(i)) slot.onclick = () => {
+        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+        slot.classList.add('selected');
+      };
+      container.appendChild(slot);
+    });
+  }
 
-                            const bookBtn = document.createElement("button");
-                            bookBtn.type = "button";
-                            bookBtn.className = "book-btn";
-                            bookBtn.textContent = "Book Resource";
-                            bookBtn.style.marginTop = "10px";
+  function toggleSchedule() {
+    document.getElementById('schedule-btn').disabled = !document.getElementById('agree-check').checked;
+  }
 
-                            // Gives alert that resource has been booked. Can be updated in future with booking logic
-                            bookBtn.addEventListener("click", () => {
-                                alert("Booked: " + resource.firstChild.textContent.trim());
-                            });
-                            
-                            // Adds the booking button to the resource
-                            resource.appendChild(bookBtn);
+  function doSchedule() {
+    const selected = document.querySelector('.time-slot.selected');
+    if (!selected) { showToast('Please select a time slot.'); return; }
+    closeModal('detail-modal');
+    showToast(`Scheduled: "${currentResource.name}" at ${selected.textContent}`);
+  }
 
-                            // Creates remove button
-	                        if (resource.querySelector(".remove-btn")) continue;
+  function openModal(id) { document.getElementById(id).classList.add('open'); }
+  function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+  function closeOnOverlay(e, id) { if (e.target === document.getElementById(id)) closeModal(id); }
 
-	                        const removeBtn = document.createElement("button");
-	                        removeBtn.type = "button";
-	                        removeBtn.className = "remove-btn";
-	                        removeBtn.textContent = "Remove Resource";
-	                        removeBtn.style.marginTop = "10px";
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
 
-                            // Removes resource upon click
-	                        removeBtn.addEventListener("click", () => {
-	                            resource.remove();
- 	                        });
-
-                            // Adds remove button to the resource
-	                        resource.appendChild(removeBtn)
-                        }
-                    }
-                }
-            });
-
-            observer.observe(resourceList, { childList: true });
-        </script>
-    </body>
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && document.getElementById('login-page').style.display !== 'none') doLogin();
+  });
+</script>
+</body>
 </html>
