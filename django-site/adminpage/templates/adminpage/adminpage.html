@@ -21,125 +21,45 @@
       --shadow-lg: 0 8px 32px rgba(0,0,0,0.15);
     }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
-    #login-page {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
+    #login-page { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; }
 
     .login-logo {
-      width: 64px;
-      height: 64px;
-      background: var(--maroon);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 2rem;
-      color: white;
-      font-family: 'EB Garamond', serif;
-      font-size: 1.8rem;
-      font-weight: 600;
-      letter-spacing: -1px;
+      width: 64px; height: 64px; background: var(--maroon); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;
+      color: white; font-family: 'EB Garamond', serif; font-size: 1.8rem; font-weight: 600; letter-spacing: -1px;
     }
 
     .login-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2.5rem 3rem;
-      width: 420px;
-      box-shadow: var(--shadow-lg);
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+      padding: 2.5rem 3rem; width: 420px; box-shadow: var(--shadow-lg);
     }
-
-    .login-card h1 {
-      font-family: 'EB Garamond', serif;
-      font-size: 2rem;
-      font-weight: 500;
-      text-align: center;
-      margin-bottom: 0.4rem;
-      color: var(--text);
-    }
-
-    .login-card .subtitle {
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.875rem;
-      margin-bottom: 2rem;
-    }
+    .login-card h1 { font-family: 'EB Garamond', serif; font-size: 2rem; font-weight: 500; text-align: center; margin-bottom: 0.4rem; }
+    .login-card .subtitle { text-align: center; color: var(--muted); font-size: 0.875rem; margin-bottom: 2rem; }
 
     .demo-credentials {
-      background: #FFF4E0;
-      border: 1px solid #F0E0C0;
-      border-radius: 8px;
-      padding: 0.75rem;
-      margin-bottom: 1.5rem;
-      font-size: 0.8rem;
-      color: #6B5A00;
+      background: #FFF4E0; border: 1px solid #F0E0C0; border-radius: 8px;
+      padding: 0.75rem; margin-bottom: 1.5rem; font-size: 0.8rem; color: #6B5A00;
     }
-
-    .demo-credentials strong {
-      display: block;
-      margin-bottom: 0.3rem;
-      color: #4A3D00;
-    }
-
-    .demo-credentials div {
-      margin-bottom: 0.2rem;
-    }
+    .demo-credentials strong { display: block; margin-bottom: 0.3rem; color: #4A3D00; }
+    .demo-credentials div { margin-bottom: 0.2rem; }
 
     .field-group { margin-bottom: 1.25rem; }
-
     .field-group label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.4rem;
+      display: block; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem;
     }
-
     .field-group input {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      transition: border-color 0.2s;
+      width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: 8px;
+      font-size: 0.95rem; font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); transition: border-color 0.2s;
     }
-
-    .field-group input:focus {
-      outline: none;
-      border-color: var(--maroon);
-      background: white;
-    }
+    .field-group input:focus { outline: none; border-color: var(--maroon); background: white; }
 
     .btn-primary {
-      width: 100%;
-      padding: 0.85rem;
-      background: var(--maroon);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: 500;
-      font-family: 'DM Sans', sans-serif;
-      cursor: pointer;
-      margin-top: 0.5rem;
-      transition: background 0.2s, transform 0.1s;
+      width: 100%; padding: 0.85rem; background: var(--maroon); color: white; border: none;
+      border-radius: 8px; font-size: 0.95rem; font-weight: 500; font-family: 'DM Sans', sans-serif;
+      cursor: pointer; margin-top: 0.5rem; transition: background 0.2s, transform 0.1s;
     }
     .btn-primary:hover { background: var(--maroon-dark); }
     .btn-primary:active { transform: scale(0.98); }
@@ -147,538 +67,188 @@
     #app-page { display: none; min-height: 100vh; }
 
     .navbar {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100;
     }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
+    .nav-brand { display: flex; align-items: center; gap: 0.75rem; }
     .nav-logo {
-      width: 36px;
-      height: 36px;
-      background: var(--maroon);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-family: 'EB Garamond', serif;
-      font-size: 1rem;
-      font-weight: 600;
+      width: 36px; height: 36px; background: var(--maroon); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; color: white;
+      font-family: 'EB Garamond', serif; font-size: 1rem; font-weight: 600;
     }
-
-    .nav-title {
-      font-family: 'EB Garamond', serif;
-      font-size: 1.15rem;
-      font-weight: 500;
-      color: var(--text);
-    }
-
+    .nav-title { font-family: 'EB Garamond', serif; font-size: 1.15rem; font-weight: 500; }
     .user-badge {
-      font-size: 0.75rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: 4px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 4px;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
     }
-
-    .user-badge.admin {
-      background: #E6F4EA;
-      color: #276B3C;
-    }
-
-    .user-badge.user {
-      background: #E3F2FD;
-      color: #1565C0;
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
+    .user-badge.admin { background: #E6F4EA; color: #276B3C; }
+    .user-badge.user  { background: #E3F2FD; color: #1565C0; }
+    .nav-actions { display: flex; align-items: center; gap: 0.75rem; }
 
     .btn-outline {
-      padding: 0.45rem 1rem;
-      border: 1.5px solid var(--border);
-      border-radius: 6px;
-      background: transparent;
-      font-size: 0.85rem;
-      font-family: 'DM Sans', sans-serif;
-      cursor: pointer;
-      color: var(--text);
-      transition: border-color 0.2s, background 0.2s;
+      padding: 0.45rem 1rem; border: 1.5px solid var(--border); border-radius: 6px;
+      background: transparent; font-size: 0.85rem; font-family: 'DM Sans', sans-serif;
+      cursor: pointer; color: var(--text); transition: border-color 0.2s, background 0.2s;
     }
     .btn-outline:hover { border-color: var(--maroon); background: #faf8f5; }
 
     .btn-sm-primary {
-      padding: 0.45rem 1rem;
-      background: var(--maroon);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      font-family: 'DM Sans', sans-serif;
-      cursor: pointer;
-      transition: background 0.2s;
+      padding: 0.45rem 1rem; background: var(--maroon); color: white; border: none;
+      border-radius: 6px; font-size: 0.85rem; font-family: 'DM Sans', sans-serif;
+      cursor: pointer; transition: background 0.2s;
     }
     .btn-sm-primary:hover { background: var(--maroon-dark); }
 
-    .main-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
+    .main-content { max-width: 1200px; margin: 0 auto; padding: 2rem; }
 
-    .tab-bar {
-      display: flex;
-      border-bottom: 2px solid var(--border);
-    }
-
+    .tab-bar { display: flex; border-bottom: 2px solid var(--border); }
     .tab-btn {
-      padding: 0.8rem 2rem;
-      border: 1px solid var(--border);
-      border-bottom: none;
-      background: var(--tab-inactive);
-      color: var(--muted);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 500;
-      cursor: pointer;
-      border-radius: 10px 10px 0 0;
-      margin-right: 4px;
-      transition: background 0.2s, color 0.2s;
-      position: relative;
-      bottom: -2px;
+      padding: 0.8rem 2rem; border: 1px solid var(--border); border-bottom: none;
+      background: var(--tab-inactive); color: var(--muted); font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem; font-weight: 500; cursor: pointer; border-radius: 10px 10px 0 0;
+      margin-right: 4px; transition: background 0.2s, color 0.2s; position: relative; bottom: -2px;
     }
     .tab-btn:hover { background: #dedad4; color: var(--text); }
     .tab-btn.active { background: var(--maroon); color: white; border-color: var(--maroon); z-index: 1; }
 
     .tab-panel {
-      background: #787066;
-      border-radius: 0 8px 8px 8px;
-      padding: 1.5rem;
-      border: 1px solid var(--border);
-      border-top: none;
-      min-height: 500px;
+      background: #787066; border-radius: 0 8px 8px 8px; padding: 1.5rem;
+      border: 1px solid var(--border); border-top: none; min-height: 500px;
     }
 
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-    }
+    .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 
     .resource-card {
-      background: var(--surface);
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.2);
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s, box-shadow 0.2s;
-      position: relative;
+      background: var(--surface); border-radius: 10px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.2); display: flex; flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s; position: relative;
     }
     .resource-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
 
     .delete-btn {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.95);
-      border: 1.5px solid #FCE8E8;
-      color: #8B2020;
-      font-size: 1.1rem;
-      cursor: pointer;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-      z-index: 10;
+      position: absolute; top: 0.5rem; right: 0.5rem; width: 28px; height: 28px;
+      border-radius: 50%; background: rgba(255,255,255,0.95); border: 1.5px solid #FCE8E8;
+      color: #8B2020; font-size: 1.1rem; cursor: pointer; display: none;
+      align-items: center; justify-content: center; transition: all 0.2s; z-index: 10;
     }
+    .resource-card:hover .delete-btn { display: flex; }
+    .delete-btn:hover { background: #FCE8E8; border-color: #8B2020; transform: scale(1.1); }
 
-    .resource-card:hover .delete-btn {
-      display: flex;
-    }
-
-    .delete-btn:hover {
-      background: #FCE8E8;
-      border-color: #8B2020;
-      transform: scale(1.1);
-    }
-
-    .card-image {
-      width: 100%;
-      aspect-ratio: 4/3;
-      background: #E0DDD8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .card-body {
-      padding: 1rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
+    .card-image { width: 100%; aspect-ratio: 4/3; background: #E0DDD8; display: flex; align-items: center; justify-content: center; }
+    .card-body { padding: 1rem; flex: 1; display: flex; flex-direction: column; }
     .card-status {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.5rem;
-      border-radius: 4px;
-      margin-bottom: 0.5rem;
+      display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; padding: 0.2rem 0.5rem; border-radius: 4px; margin-bottom: 0.5rem;
     }
     .status-available   { background: #E6F4EA; color: #276B3C; }
     .status-limited     { background: #FFF4E0; color: #8A5A00; }
     .status-unavailable { background: #FCE8E8; color: #8B2020; }
-
     .card-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.4rem; }
-
     .card-desc {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.5;
-      flex: 1;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      font-size: 0.82rem; color: var(--muted); line-height: 1.5; flex: 1;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
     }
-
-    .card-footer {
-      padding: 0.75rem 1rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
+    .card-footer { padding: 0.75rem 1rem; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
     .card-location { font-size: 0.78rem; color: var(--muted); }
-
     .btn-view {
-      padding: 0.4rem 0.9rem;
-      background: transparent;
-      border: 1.5px solid var(--maroon);
-      color: var(--maroon);
-      border-radius: 6px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      transition: background 0.2s, color 0.2s;
+      padding: 0.4rem 0.9rem; background: transparent; border: 1.5px solid var(--maroon);
+      color: var(--maroon); border-radius: 6px; font-size: 0.8rem; font-weight: 500;
+      cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s, color 0.2s;
     }
     .btn-view:hover { background: var(--maroon); color: white; }
 
     .empty-state {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 4rem;
-      color: rgba(255,255,255,0.6);
-      text-align: center;
-      gap: 0.75rem;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 4rem; color: rgba(255,255,255,0.6); text-align: center; gap: 0.75rem;
     }
     .empty-state p { font-size: 0.95rem; }
 
-    .reservation-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
+    .reservation-list { display: flex; flex-direction: column; gap: 0.75rem; }
     .reservation-item {
-      background: var(--surface);
-      border-radius: 8px;
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border: 1px solid var(--border);
+      background: var(--surface); border-radius: 8px; padding: 1rem;
+      display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border);
     }
-
-    .reservation-info h4 {
-      font-size: 0.95rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .reservation-info p {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
+    .reservation-info h4 { font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .reservation-info p { font-size: 0.8rem; color: var(--muted); }
     .btn-cancel {
-      padding: 0.4rem 0.9rem;
-      background: transparent;
-      border: 1.5px solid #8B2020;
-      color: #8B2020;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      transition: background 0.2s, color 0.2s;
+      padding: 0.4rem 0.9rem; background: transparent; border: 1.5px solid #8B2020;
+      color: #8B2020; border-radius: 6px; font-size: 0.8rem; font-weight: 500;
+      cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s, color 0.2s;
     }
     .btn-cancel:hover { background: #8B2020; color: white; }
 
     .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 200;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(2px);
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+      z-index: 200; align-items: center; justify-content: center; backdrop-filter: blur(2px);
     }
     .modal-overlay.open { display: flex; }
-
     .modal-box {
-      background: var(--surface);
-      border-radius: 14px;
-      width: 480px;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: var(--shadow-lg);
-      animation: slideUp 0.2s ease;
+      background: var(--surface); border-radius: 14px; width: 480px;
+      max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-lg); animation: slideUp 0.2s ease;
     }
-
     .detail-modal-box {
-      background: var(--surface);
-      border-radius: 14px;
-      width: 860px;
-      max-width: 95vw;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: var(--shadow-lg);
-      animation: slideUp 0.2s ease;
+      background: var(--surface); border-radius: 14px; width: 860px; max-width: 95vw;
+      max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-lg); animation: slideUp 0.2s ease;
     }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
     .modal-header {
-      padding: 1.25rem 1.5rem;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
     }
-
-    .modal-header h3 {
-      font-family: 'EB Garamond', serif;
-      font-size: 1.25rem;
-      font-weight: 500;
-    }
-
-    .modal-close {
-      background: none;
-      border: none;
-      font-size: 1.4rem;
-      cursor: pointer;
-      color: var(--muted);
-      line-height: 1;
-      padding: 0.2rem;
-      border-radius: 4px;
-      transition: color 0.15s;
-    }
+    .modal-header h3 { font-family: 'EB Garamond', serif; font-size: 1.25rem; font-weight: 500; }
+    .modal-close { background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--muted); line-height: 1; padding: 0.2rem; border-radius: 4px; transition: color 0.15s; }
     .modal-close:hover { color: var(--text); }
-
     .modal-body { padding: 1.5rem; }
-
-    .modal-body .field-group label {
-      text-transform: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text);
-      letter-spacing: 0;
+    .modal-body .field-group label { text-transform: none; font-size: 0.85rem; font-weight: 500; color: var(--text); letter-spacing: 0; }
+    .modal-body select, .modal-body textarea {
+      width: 100%; padding: 0.75rem 1rem; border: 1.5px solid var(--border); border-radius: 8px;
+      font-size: 0.95rem; font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); transition: border-color 0.2s;
     }
-
-    .modal-body select,
-    .modal-body textarea {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      transition: border-color 0.2s;
-    }
-
-    .modal-body select:focus,
-    .modal-body textarea:focus,
-    .modal-body input:focus {
-      outline: none;
-      border-color: var(--maroon);
-      background: white;
-    }
-
-    .modal-footer {
-      padding: 1rem 1.5rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: flex-end;
-      gap: 0.75rem;
-    }
+    .modal-body select:focus, .modal-body textarea:focus, .modal-body input:focus { outline: none; border-color: var(--maroon); background: white; }
+    .modal-footer { padding: 1rem 1.5rem; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 0.75rem; }
 
     .detail-header {
-      background: var(--maroon);
-      color: white;
-      padding: 1.25rem 1.5rem;
-      border-radius: 14px 14px 0 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      background: var(--maroon); color: white; padding: 1.25rem 1.5rem;
+      border-radius: 14px 14px 0 0; display: flex; align-items: center; justify-content: space-between;
     }
-
-    .detail-header h3 {
-      font-family: 'EB Garamond', serif;
-      font-size: 1.4rem;
-      font-weight: 500;
-    }
-
+    .detail-header h3 { font-family: 'EB Garamond', serif; font-size: 1.4rem; font-weight: 500; }
     .detail-header .modal-close { color: rgba(255,255,255,0.7); }
     .detail-header .modal-close:hover { color: white; }
-
     .detail-body { padding: 1.5rem; }
+    .detail-desc { font-size: 0.9rem; line-height: 1.7; color: var(--muted); margin-bottom: 1.25rem; }
+    .detail-media { display: grid; grid-template-columns: 240px 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+    .detail-img { border-radius: 8px; background: #E0DDD8; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }
+    .detail-calendar { border-radius: 8px; background: var(--bg); border: 1.5px solid var(--border); padding: 1rem; }
+    .calendar-title { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.75rem; }
 
-    .detail-desc {
-      font-size: 0.9rem;
-      line-height: 1.7;
-      color: var(--muted);
-      margin-bottom: 1.25rem;
-    }
-
-    .detail-media {
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .detail-img {
-      border-radius: 8px;
-      background: #E0DDD8;
-      aspect-ratio: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .detail-calendar {
-      border-radius: 8px;
-      background: var(--bg);
-      border: 1.5px solid var(--border);
-      padding: 1rem;
-    }
-
-    .calendar-title {
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-      margin-bottom: 0.75rem;
-    }
-
-    .time-slots {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.4rem;
-    }
-
+    .time-slots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.4rem; }
     .time-slot {
-      padding: 0.4rem 0;
-      text-align: center;
-      border: 1.5px solid var(--border);
-      border-radius: 5px;
-      font-size: 0.75rem;
-      cursor: pointer;
-      transition: all 0.15s;
-      background: white;
+      padding: 0.4rem 0; text-align: center; border: 1.5px solid var(--border);
+      border-radius: 5px; font-size: 0.75rem; cursor: pointer; transition: all 0.15s; background: white;
     }
     .time-slot:hover { border-color: var(--maroon); color: var(--maroon); }
     .time-slot.selected { background: var(--maroon); color: white; border-color: var(--maroon); }
     .time-slot.taken { background: #eee; color: #bbb; cursor: not-allowed; }
 
     .detail-footer {
-      padding: 1rem 1.5rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      padding: 1rem 1.5rem; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
     }
-
-    .agree-label {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.85rem;
-      color: var(--muted);
-      cursor: pointer;
-    }
-    .agree-label input[type="checkbox"] {
-      width: 16px;
-      height: 16px;
-      accent-color: var(--maroon);
-      cursor: pointer;
-    }
-
+    .agree-label { display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; color: var(--muted); cursor: pointer; }
+    .agree-label input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--maroon); cursor: pointer; }
     .btn-schedule {
-      padding: 0.7rem 1.75rem;
-      background: var(--maroon);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: 500;
-      font-family: 'DM Sans', sans-serif;
-      cursor: pointer;
-      transition: background 0.2s;
+      padding: 0.7rem 1.75rem; background: var(--maroon); color: white; border: none;
+      border-radius: 8px; font-size: 0.95rem; font-weight: 500; font-family: 'DM Sans', sans-serif;
+      cursor: pointer; transition: background 0.2s;
     }
     .btn-schedule:hover { background: var(--maroon-dark); }
     .btn-schedule:disabled { background: #ccc; cursor: not-allowed; }
 
     #toast {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background: #1C1A17;
-      color: white;
-      padding: 0.8rem 1.25rem;
-      border-radius: 8px;
-      font-size: 0.875rem;
-      box-shadow: var(--shadow-lg);
-      z-index: 999;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.25s, transform 0.25s;
-      pointer-events: none;
+      position: fixed; bottom: 2rem; right: 2rem; background: #1C1A17; color: white;
+      padding: 0.8rem 1.25rem; border-radius: 8px; font-size: 0.875rem; box-shadow: var(--shadow-lg);
+      z-index: 999; opacity: 0; transform: translateY(8px); transition: opacity 0.25s, transform 0.25s; pointer-events: none;
     }
     #toast.show { opacity: 1; transform: translateY(0); }
   </style>
@@ -691,13 +261,11 @@
   <div class="login-card">
     <h1>Sign in to continue</h1>
     <p class="subtitle">Campus Resource Reservation System</p>
-
     <div class="demo-credentials">
       <strong>Demo Credentials:</strong>
       <div>👑 Admin: admin@csuchico.edu / admin123</div>
       <div>👤 User: user@csuchico.edu / user123</div>
     </div>
-
     <div class="field-group">
       <label>University Email</label>
       <input type="email" id="login-email" placeholder="yourname@csuchico.edu">
@@ -712,7 +280,6 @@
 
 <!-- main app -->
 <div id="app-page">
-
   <nav class="navbar">
     <div class="nav-brand">
       <div class="nav-logo">CR</div>
@@ -732,7 +299,6 @@
       <button class="tab-btn" onclick="switchTab('Loanables', this)">Loanables</button>
       <button class="tab-btn" onclick="switchTab('Tutoring', this)">Tutoring</button>
     </div>
-
     <div class="tab-panel">
       <div class="card-grid" id="card-grid"></div>
       <div class="empty-state" id="empty-state" style="display:none">
@@ -801,10 +367,14 @@
       <p class="detail-desc" id="detail-desc"></p>
       <div class="detail-media">
         <div class="detail-img">
-          <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#b0a89e" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="3" x2="21" y2="21"/><line x1="21" y1="3" x2="3" y2="21"/></svg>
+          <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#b0a89e" stroke-width="1.2">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <line x1="3" y1="3" x2="21" y2="21"/>
+            <line x1="21" y1="3" x2="3" y2="21"/>
+          </svg>
         </div>
         <div class="detail-calendar">
-          <p class="calendar-title">Select a time slot</p>
+          <p class="calendar-title">Select a time slot — <span id="slot-date"></span></p>
           <div class="time-slots" id="time-slots"></div>
         </div>
       </div>
@@ -822,94 +392,77 @@
 <div id="toast"></div>
 
 <script>
-  // Initializations
-  let allResources = []
-  let currentTab = 'Books';
+  // ── State ──────────────────────────────────────────────────────────────────
+  let allResources  = [];
+  let currentTab    = 'Books';
   let currentResource = null;
-  let currentUser = null; // { email, role: 'admin' | 'user' }
-  let userReservations = []; // Array of { resourceId, resourceName, timeSlot, timestamp }
+  let currentUser   = null;   // { email, role: 'admin' | 'user' }
+  let takenSlots    = [];     // time strings taken for currentResource on selectedDate
+  let selectedDate  = todayStr();
 
-  // Token needed to post resource information to views
   const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]')?.value;
 
-  // Mock user database (in production, this would be server-side)
+  // Mock credentials — replace with Django auth when ready
   const mockUsers = {
     'admin@csuchico.edu': { password: 'admin123', role: 'admin' },
-    'user@csuchico.edu': { password: 'user123', role: 'user' }
+    'user@csuchico.edu':  { password: 'user123',  role: 'user'  },
   };
 
-  // Gets Resource objects from views, saves them to allResources, then calls renderTab
-  async function loadResources() {
-    try{
-      allResources = [];
-      const response = await fetch('/get-resources/');
-      const result = await response.json();
-      allResources = result.resources || [];
-      renderTab(currentTab);
-    } catch (error){
-      console.error('Failed to load resources:', error);
-      showToast('Failed to load resources');
-    }
+  function todayStr() {
+    return new Date().toISOString().split('T')[0];  // YYYY-MM-DD
   }
 
+  // ── Auth ───────────────────────────────────────────────────────────────────
   function doLogin() {
     const email = document.getElementById('login-email').value.trim();
-    const pass = document.getElementById('login-pass').value;
+    const pass  = document.getElementById('login-pass').value;
     if (!email || !pass) { showToast('Please fill in all fields.'); return; }
-    
-    // Check credentials (in production, this would be server-side)
+
     const user = mockUsers[email];
-    if (!user || user.password !== pass) {
-      showToast('Invalid email or password.');
-      return;
-    }
-    
+    if (!user || user.password !== pass) { showToast('Invalid email or password.'); return; }
+
     currentUser = { email, role: user.role };
-    loadUserReservations();
-    
     document.getElementById('login-page').style.display = 'none';
     document.getElementById('app-page').style.display = 'block';
     updateUIForRole();
     loadResources();
   }
-  
-  function updateUIForRole() {
-    const actionBtn = document.getElementById('action-btn');
-    const userBadge = document.getElementById('user-badge');
-    
-    // Update user badge
-    userBadge.textContent = currentUser.role;
-    userBadge.className = `user-badge ${currentUser.role}`;
-    
-    if (currentUser.role === 'admin') {
-      actionBtn.textContent = '+ Add Resource';
-      actionBtn.onclick = openAddModal;
-      actionBtn.style.display = 'inline-block';
-    } else {
-      actionBtn.textContent = 'My Reservations';
-      actionBtn.onclick = showMyReservations;
-      actionBtn.style.display = 'inline-block';
-    }
-  }
-  
-  // For now, reservations are all stored locally, but this should change soon
-
-  function loadUserReservations() {
-    const stored = localStorage.getItem(`reservations_${currentUser.email}`);
-    userReservations = stored ? JSON.parse(stored) : [];
-  }
-  
-  function saveUserReservations() {
-    localStorage.setItem(`reservations_${currentUser.email}`, JSON.stringify(userReservations));
-  }
 
   function doLogout() {
     currentUser = null;
-    userReservations = [];
     document.getElementById('app-page').style.display = 'none';
     document.getElementById('login-page').style.display = 'flex';
     document.getElementById('login-email').value = '';
     document.getElementById('login-pass').value = '';
+  }
+
+  function updateUIForRole() {
+    const actionBtn = document.getElementById('action-btn');
+    const badge     = document.getElementById('user-badge');
+    badge.textContent = currentUser.role;
+    badge.className   = `user-badge ${currentUser.role}`;
+
+    if (currentUser.role === 'admin') {
+      actionBtn.textContent = '+ Add Resource';
+      actionBtn.onclick = openAddModal;
+    } else {
+      actionBtn.textContent = 'My Reservations';
+      actionBtn.onclick = showMyReservations;
+    }
+    actionBtn.style.display = 'inline-block';
+  }
+
+  // ── Resources ──────────────────────────────────────────────────────────────
+  async function loadResources() {
+    try {
+      const res  = await fetch('/get-resources/');
+      const data = await res.json();
+      allResources = data.resources || [];
+      renderTab(currentTab);
+    } catch (err) {
+      console.error(err);
+      showToast('Failed to load resources.');
+    }
   }
 
   function switchTab(tab, el) {
@@ -920,26 +473,24 @@
   }
 
   function renderTab(tab) {
-    const grid = document.getElementById('card-grid');
-    const empty = document.getElementById('empty-state');
-    const reservationList = document.getElementById('reservation-list');
-    
-    // Hide reservation list
-    reservationList.style.display = 'none';
-    grid.style.display = 'grid';
-    
+    const grid    = document.getElementById('card-grid');
+    const empty   = document.getElementById('empty-state');
+    const resList = document.getElementById('reservation-list');
+
+    resList.style.display = 'none';
+    grid.style.display    = 'grid';
+
     const list = allResources.filter(r => r.category === tab);
     grid.innerHTML = '';
-    if (list.length === 0) {
-      empty.style.display = 'flex';
-      return;
-    }
+
+    if (list.length === 0) { empty.style.display = 'flex'; return; }
     empty.style.display = 'none';
-    list.forEach((r) => {
+
+    list.forEach(r => {
       let statusClass = 'status-unavailable';
       if (r.avail === 'Available') statusClass = 'status-available';
       else if (r.avail === 'Limited') statusClass = 'status-limited';
-      
+
       const card = document.createElement('div');
       card.className = 'resource-card';
       card.innerHTML = `
@@ -964,134 +515,110 @@
     });
   }
 
-  function openAddModal() { 
-    if (currentUser.role !== 'admin') {
-      showToast('Only admins can add resources.');
-      return;
-    }
-    openModal('add-modal'); 
+  function openAddModal() {
+    if (currentUser.role !== 'admin') { showToast('Only admins can add resources.'); return; }
+    openModal('add-modal');
   }
 
   async function submitResource() {
-    const name = document.getElementById('r-name').value.trim();
-    const loc = document.getElementById('r-location').value.trim();
-    const cat = document.getElementById('r-category').value;
-    const desc = document.getElementById('r-desc').value.trim();
+    const name  = document.getElementById('r-name').value.trim();
+    const loc   = document.getElementById('r-location').value.trim();
+    const cat   = document.getElementById('r-category').value;
+    const desc  = document.getElementById('r-desc').value.trim();
     const avail = document.getElementById('r-avail').value;
-    
-    if (!name || !loc || !desc) { 
-      showToast('Please fill in all required fields.'); 
-      return; 
-    }
-    
-    // Posts the resource information entered to the views to create a Resource object
-    try{
-      const response = await fetch('/add-resource/', {
+
+    if (!name || !loc || !desc) { showToast('Please fill in all required fields.'); return; }
+
+    try {
+      const res  = await fetch('/add-resource/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': csrftoken
-        },
-        body: JSON.stringify({
-          name,
-          location: loc,
-          category: cat,
-          desc,
-          avail
-        })
+        headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrftoken },
+        body: JSON.stringify({ name, location: loc, category: cat, desc, avail }),
       });
-
-
-      const result = await response.json();
-      if (!result.success){
-        showToast(result.error || 'Failed to save resource.');
-        return;
-      }
+      const data = await res.json();
+      if (!data.success) { showToast(data.error || 'Failed to save resource.'); return; }
 
       closeModal('add-modal');
-      if (cat === currentTab) loadResources();
-      document.querySelectorAll('.tab-btn').forEach(b => {
-        if (b.textContent === cat) b.click();
-      });
-
-      showToast(`"${name}" added to ${cat}.`);
-      document.getElementById('r-name').value = '';
+      document.getElementById('r-name').value  = '';
       document.getElementById('r-location').value = '';
-      document.getElementById('r-desc').value = '';
+      document.getElementById('r-desc').value  = '';
       document.getElementById('r-avail').value = 'Available';
-    } catch (error) {
-      console.error(error);
+      showToast(`"${name}" added to ${cat}.`);
+      document.querySelectorAll('.tab-btn').forEach(b => { if (b.textContent === cat) b.click(); });
+    } catch (err) {
+      console.error(err);
       showToast('Something went wrong while saving.');
     }
   }
 
   async function deleteResource(resourceId) {
-    if (currentUser.role !== 'admin') {
-      showToast('Only admins can delete resources.');
-      return;
-    }
-
+    if (currentUser.role !== 'admin') { showToast('Only admins can delete resources.'); return; }
     const resource = allResources.find(r => r.id === resourceId);
     if (!resource) return;
-    if (confirm(`Are you sure you want to delete "${resource.name}"?`)) {
-      try{
-        // Posts id of resource to delete to views, where that object will be deleted
-        const response = await fetch('/remove-resource/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrftoken
-          },
-          body: JSON.stringify({
-            id: resourceId
-          })
-        });
+    if (!confirm(`Delete "${resource.name}"?`)) return;
 
-        const result = await response.json();
-        if (!result.success){
-          showToast(result.error || 'Failed to delete resource.')
-          return;
-        }
-
-        loadResources();
-
-        showToast(`"${resource.name}" has been deleted.`);
-      } catch (error) {
-        console.error(error);
-        showToast('Something went wrong while deleting.');
-      }
+    try {
+      const res  = await fetch('/remove-resource/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrftoken },
+        body: JSON.stringify({ id: resourceId }),
+      });
+      const data = await res.json();
+      if (!data.success) { showToast(data.error || 'Failed to delete resource.'); return; }
+      showToast(`"${resource.name}" deleted.`);
+      loadResources();
+    } catch (err) {
+      console.error(err);
+      showToast('Something went wrong while deleting.');
     }
   }
 
-  function openDetail(resourceId) {
+  // ── Detail modal + time slots ──────────────────────────────────────────────
+  async function openDetail(resourceId) {
     const r = allResources.find(r => r.id === resourceId);
-    if (!r) {
-      showToast("Resource not found.");
-      return;
-    }
+    if (!r) { showToast('Resource not found.'); return; }
 
     currentResource = r;
+    selectedDate    = todayStr();
+
     document.getElementById('detail-title').textContent = r.name;
-    document.getElementById('detail-desc').textContent = r.desc + ' — Located at ' + r.location + '.';
-    document.getElementById('agree-check').checked = false;
-    document.getElementById('schedule-btn').disabled = true;
-    buildTimeSlots();
+    document.getElementById('detail-desc').textContent  = r.desc + ' — Located at ' + r.location + '.';
+    document.getElementById('slot-date').textContent    = selectedDate;
+    document.getElementById('agree-check').checked      = false;
+    document.getElementById('schedule-btn').disabled    = true;
+
+    await refreshTimeSlots();
     openModal('detail-modal');
   }
 
-  function buildTimeSlots() {
-    const times = ['8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM','7:00 PM'];
-    const taken = [2, 5, 9]; // fake unavailable slots
+  // Fetches real taken slots from the DB, then renders the grid
+  async function refreshTimeSlots() {
+    const times = ['8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM',
+                   '1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM','7:00 PM'];
     const container = document.getElementById('time-slots');
+    container.innerHTML = '<p style="font-size:0.8rem;color:var(--muted)">Loading slots…</p>';
+
+    try {
+      const res  = await fetch(`/get-reservations/?resource_id=${currentResource.id}&date=${selectedDate}`);
+      const data = await res.json();
+      takenSlots = data.taken_slots || [];
+    } catch (err) {
+      console.error(err);
+      takenSlots = [];
+    }
+
     container.innerHTML = '';
-    times.forEach((t, i) => {
-      const slot = document.createElement('div');
-      slot.className = 'time-slot' + (taken.includes(i) ? ' taken' : '');
+    times.forEach(t => {
+      const isTaken = takenSlots.includes(t);
+      const slot    = document.createElement('div');
+      slot.className = 'time-slot' + (isTaken ? ' taken' : '');
       slot.textContent = t;
-      if (!taken.includes(i)) slot.onclick = () => {
-        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
-        slot.classList.add('selected');
-      };
+      if (!isTaken) {
+        slot.onclick = () => {
+          document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+          slot.classList.add('selected');
+        };
+      }
       container.appendChild(slot);
     });
   }
@@ -1100,83 +627,105 @@
     document.getElementById('schedule-btn').disabled = !document.getElementById('agree-check').checked;
   }
 
-  function doSchedule() {
-    if (currentUser.role !== 'user') {
-      showToast('Only users can make reservations.');
-      return;
-    }
-    
+  async function doSchedule() {
+    if (currentUser.role !== 'user') { showToast('Only users can make reservations.'); return; }
+
     const selected = document.querySelector('.time-slot.selected');
-    if (!selected) { 
-      showToast('Please select a time slot.'); 
-      return; 
+    if (!selected) { showToast('Please select a time slot.'); return; }
+
+    try {
+      const res  = await fetch('/make-reservation/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrftoken },
+        body: JSON.stringify({
+          resource_id: currentResource.id,
+          user_email:  currentUser.email,
+          time_slot:   selected.textContent,
+          date:        selectedDate,
+        }),
+      });
+      const data = await res.json();
+
+      if (!data.success) {
+        // Slot was just taken by someone else — refresh the grid
+        showToast(data.error || 'Could not reserve that slot.');
+        await refreshTimeSlots();
+        return;
+      }
+
+      closeModal('detail-modal');
+      showToast(`Reserved "${currentResource.name}" at ${selected.textContent}`);
+    } catch (err) {
+      console.error(err);
+      showToast('Something went wrong while reserving.');
     }
-    
-    const reservation = {
-      id: Date.now().toString(),
-      resourceId: currentResource.id,
-      resourceName: currentResource.name,
-      timeSlot: selected.textContent,
-      timestamp: new Date().toISOString()
-    };
-    
-    userReservations.push(reservation);
-    saveUserReservations();
-    
-    closeModal('detail-modal');
-    showToast(`Reserved: "${currentResource.name}" at ${selected.textContent}`);
   }
 
-  function showMyReservations() {
-    const grid = document.getElementById('card-grid');
-    const empty = document.getElementById('empty-state');
-    const reservationList = document.getElementById('reservation-list');
-    
-    grid.style.display = 'none';
+  // ── My Reservations ────────────────────────────────────────────────────────
+  async function showMyReservations() {
+    const grid    = document.getElementById('card-grid');
+    const empty   = document.getElementById('empty-state');
+    const resList = document.getElementById('reservation-list');
+
+    grid.style.display  = 'none';
     empty.style.display = 'none';
-    reservationList.style.display = 'flex';
-    
-    // Update tab to show "My Reservations"
+    resList.style.display = 'flex';
+    resList.innerHTML = '<p style="color:rgba(255,255,255,0.6);padding:1rem">Loading…</p>';
+
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    
-    reservationList.innerHTML = '';
-    
-    if (userReservations.length === 0) {
-      reservationList.innerHTML = '<div class="empty-state" style="display:flex"><p>You have no reservations yet.</p></div>';
-      return;
-    }
-    
-    userReservations.forEach(res => {
-      const item = document.createElement('div');
-      item.className = 'reservation-item';
-      item.innerHTML = `
-        <div class="reservation-info">
-          <h4>${res.resourceName}</h4>
-          <p>Time: ${res.timeSlot} • Reserved on ${new Date(res.timestamp).toLocaleDateString()}</p>
-        </div>
-        <button class="btn-cancel" onclick="cancelReservation('${res.id}')">Cancel</button>
-      `;
-      reservationList.appendChild(item);
-    });
-  }
 
-  function cancelReservation(reservationId) {
-    const reservation = userReservations.find(r => r.id === reservationId);
-    if (!reservation) return;
-    
-    if (confirm(`Are you sure you want to cancel your reservation for "${reservation.resourceName}"?`)) {
-      userReservations = userReservations.filter(r => r.id !== reservationId);
-      saveUserReservations();
-      showMyReservations();
-      showToast('Reservation cancelled successfully.');
+    try {
+      const res  = await fetch(`/get-reservations/?user_email=${encodeURIComponent(currentUser.email)}`);
+      const data = await res.json();
+      const list = data.reservations || [];
+
+      resList.innerHTML = '';
+      if (list.length === 0) {
+        resList.innerHTML = '<div class="empty-state" style="display:flex"><p>You have no reservations yet.</p></div>';
+        return;
+      }
+
+      list.forEach(res => {
+        const item = document.createElement('div');
+        item.className = 'reservation-item';
+        item.innerHTML = `
+          <div class="reservation-info">
+            <h4>${res.resource_name}</h4>
+            <p>${res.time_slot} on ${res.date}</p>
+          </div>
+          <button class="btn-cancel" onclick="cancelReservation(${res.id}, '${res.resource_name}')">Cancel</button>`;
+        resList.appendChild(item);
+      });
+    } catch (err) {
+      console.error(err);
+      resList.innerHTML = '<p style="color:rgba(255,255,255,0.6);padding:1rem">Failed to load reservations.</p>';
     }
   }
 
-  function openModal(id) { document.getElementById(id).classList.add('open'); }
+  async function cancelReservation(reservationId, resourceName) {
+    if (!confirm(`Cancel your reservation for "${resourceName}"?`)) return;
+
+    try {
+      const res  = await fetch('/cancel-reservation/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrftoken },
+        body: JSON.stringify({ id: reservationId, user_email: currentUser.email }),
+      });
+      const data = await res.json();
+      if (!data.success) { showToast(data.error || 'Could not cancel reservation.'); return; }
+      showToast('Reservation cancelled.');
+      showMyReservations();   // refresh the list
+    } catch (err) {
+      console.error(err);
+      showToast('Something went wrong while cancelling.');
+    }
+  }
+
+  // ── Utilities ──────────────────────────────────────────────────────────────
+  function openModal(id)  { document.getElementById(id).classList.add('open'); }
   function closeModal(id) { document.getElementById(id).classList.remove('open'); }
   function closeOnOverlay(e, id) { if (e.target === document.getElementById(id)) closeModal(id); }
 
-  // Used to give popup on screen
   function showToast(msg) {
     const t = document.getElementById('toast');
     t.textContent = msg;
