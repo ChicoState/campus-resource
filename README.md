@@ -1,7 +1,5 @@
 # Campus Resource
 
-[Campus Resource Website Link](https://campus-resource-318935754370.us-west1.run.app)
-
 A Website to Manage, Book, and Schedule Resources for Students
 
 ## Data Model
