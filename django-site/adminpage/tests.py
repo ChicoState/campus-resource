@@ -21,6 +21,27 @@ class ResourceModelTest(TestCase):
         self.assertEqual(resource.desc, "A collection of computer science textbooks available for short-term loan.")
         self.assertEqual(resource.avail, "Available")
 
+    def test_resource_setters(self):
+        resource = Resource.objects.get(id=self.resource.id)
+        resource.set_name("NAME")
+        resource.set_category("Books")
+        resource.set_location("LOCATION")
+        resource.set_desc("DESC")
+        resource.set_avail("Available")
+        self.assertEqual(resource.name, "NAME")
+        self.assertEqual(resource.category, "Books")
+        self.assertEqual(resource.location, "LOCATION")
+        self.assertEqual(resource.desc, "DESC")
+        self.assertEqual(resource.avail, "Available")
+
+    def test_resource_getters(self):
+        resource = Resource.objects.get(id=self.resource.id)
+        self.assertEqual(resource.get_name(), "CSci Textbooks")
+        self.assertEqual(resource.get_category(), "Books")
+        self.assertEqual(resource.get_location(), "Meriam Library")
+        self.assertEqual(resource.get_desc(), "A collection of computer science textbooks available for short-term loan.")
+        self.assertEqual(resource.get_avail(), "Available")
+    
     def test_category_choices(self):
         """Resource accepts each valid category choice defined on the model."""
         valid_categories = [value for value, _ in Resource._meta.get_field("category").choices]
